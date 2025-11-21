@@ -1,0 +1,11 @@
+FeaturePilot - Java / Spring Boot Feature Flag SDK
+Copyright (c) 2025 FeaturePilot
+
+This product includes software developed by:
+- Spring Framework and Spring Boot (https://spring.io)
+- Apache HttpClient (https://hc.apache.org/)
+- Lombok (https://projectlombok.org/)
+- Jackson Annotations (https://github.com/FasterXML/jackson)
+
+Licensed under the MIT License.
+A copy of the MIT License is included in LICENSE.txt.

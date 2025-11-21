@@ -1,0 +1,62 @@
+{
+  "groups": [
+    {
+      "name": "featurepilot",
+      "type": "dev.featurepilot.config.FeaturePilotProperties",
+      "sourceType": "dev.featurepilot.config.FeaturePilotProperties"
+    },
+    {
+      "name": "featurepilot.source",
+      "type": "dev.featurepilot.config.FeaturePilotProperties$SourceProperties",
+      "sourceType": "dev.featurepilot.config.FeaturePilotProperties"
+    },
+    {
+      "name": "featurepilot.source.server",
+      "type": "dev.featurepilot.config.FeaturePilotProperties$ServerConfig",
+      "sourceType": "dev.featurepilot.config.FeaturePilotProperties"
+    },
+    {
+      "name": "featurepilot.source.server.auth",
+      "type": "dev.featurepilot.config.FeaturePilotProperties$Auth",
+      "sourceType": "dev.featurepilot.config.FeaturePilotProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "featurepilot.source.provider",
+      "type": "java.lang.String",
+      "description": "Which provider to use: local or server.",
+      "defaultValue": "local"
+    },
+    {
+      "name": "featurepilot.source.server.url",
+      "type": "java.lang.String",
+      "description": "Base URL of the remote FeaturePilot server."
+    },
+    {
+      "name": "featurepilot.source.server.auth.api-key",
+      "type": "java.lang.String",
+      "description": "API key for authenticating with the remote FeaturePilot server."
+    },
+    {
+      "name": "featurepilot.source.server.project-ids",
+      "type": "java.util.List<java.lang.Integer>",
+      "description": "List of project IDs for remote feature flag resolution."
+    },
+    {
+      "name": "featurepilot.source.server.refresh",
+      "type": "java.lang.Long",
+      "description": "Refresh interval in milliseconds for remote feature polling."
+    },
+    {
+      "name": "featurepilot.source.server.fallback",
+      "type": "java.lang.Boolean",
+      "description": "Fallback to default flows if remote server is not available."
+    },
+    {
+      "name": "featurepilot.flags",
+      "type": "java.util.Map<java.lang.String,java.lang.String>",
+      "description": "Key-value map of feature flags and their variants."
+    }
+  ]
+}

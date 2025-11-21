@@ -1,0 +1,103 @@
+import com.vanniktech.maven.publish.SonatypeHost
+
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'signing'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'com.vanniktech.maven.publish' version '0.28.0'
+}
+
+group = 'dev.featurepilot'
+version = '0.0.1'
+description = 'FeaturePilot Spring Boot Starter'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+    withSourcesJar()
+    withJavadocJar()
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-dependencies:3.5.7"
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'org.springframework:spring-context'
+    implementation 'org.springframework:spring-aop'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.springframework.boot:spring-boot-configuration-processor'
+
+    implementation 'org.apache.httpcomponents.client5:httpclient5:5.2.1'
+}
+
+jar {
+    manifest {
+        attributes(
+                "Manifest-Version": "1.0",
+                "Implementation-Title": "FeaturePilot SDK",
+                "Implementation-Version": version,
+                "Implementation-Vendor": "Israfil Iskandarov",
+                "Implementation-Vendor-Id": "dev.featurepilot",
+                "Specification-Title": "FeaturePilot SDK",
+                "Specification-Version": version,
+                "Created-By": "Java 21",
+                "Build-Jdk-Spec": "21",
+                "Built-By": "FeaturePilot Build System",
+                "License": "META-INF/LICENSE.txt"
+        )
+    }
+
+    from("LICENSE.txt") {
+        into "META-INF"
+    }
+}
+
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+
+    coordinates("dev.featurepilot", "sdk", version)
+
+    pom {
+        name.set("FeaturePilot Spring Boot Starter")
+        description.set("Feature flag and flow routing SDK for Java & Spring Boot")
+        inceptionYear.set("2025")
+        url.set("https://github.com/featurepilot-dev/featurepilot-java-sdk")
+
+        licenses {
+            license {
+                name.set("MIT License")
+                url.set("https://opensource.org/licenses/MIT")
+            }
+        }
+
+        scm {
+            url.set("https://github.com/featurepilot-dev/java-sdk")
+            connection.set("scm:git:https://github.com/featurepilot-dev/featurepilot-java-sdk.git")
+            developerConnection.set("scm:git:ssh://github.com/featurepilot-dev/featurepilot-java-sdk.git")
+        }
+
+        developers {
+            developer {
+                id.set("israfil")
+                name.set("Israfil Iskandarov")
+                email.set("israfiliskandarov@featurepilot.dev")
+            }
+        }
+    }
+}
