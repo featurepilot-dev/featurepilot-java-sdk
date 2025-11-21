@@ -130,7 +130,7 @@ Full guide: `docs/PUBLISHING.md` (coming soon)
 ## 👨‍💻 Author
 **Israfil Iskandarov**  
 Founder of FeaturePilot  
-https://github.com/featurepilot-dev
+https://www.linkedin.com/in/israfiliskandarov/
 
 ---
 
