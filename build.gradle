@@ -95,3 +95,12 @@ mavenPublishing {
         }
     }
 }
+
+signing {
+    useInMemoryPgpKeys(
+            file(findProperty("signing.secretKeyFile")).text,
+            findProperty("signing.password")
+    )
+
+    sign publishing.publications
+}

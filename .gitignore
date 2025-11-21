@@ -1,37 +1,94 @@
-HELP.md
-.gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
+########################################
+# Build Artifacts
+########################################
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+# Gradle build output
+/build/
+/out/
+/bin/
+/target/
+
+# Ignore all nested build dirs except wrapper JAR
+**/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+########################################
+# Sensitive Files — DO NOT COMMIT
+########################################
+
+# Gradle local properties (may contain Sonatype, GPG, secrets)
+gradle.properties
+**/gradle.properties
+
+# GPG / PGP keys
+*.asc
+*.gpg
+*.pgp
+*.key
+*.keyring
+
+# The exported public key file
+pubkey.asc
+
+########################################
+# IDE / Editor Files
+########################################
 
 ### IntelliJ IDEA ###
-.idea
-*.iws
+.idea/
 *.iml
 *.ipr
+*.iws
+
+# IntelliJ Output
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+### Eclipse / STS ###
+.classpath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+.factorypath
+.apt_generated/
 
 ### VS Code ###
 .vscode/
+
+########################################
+# System Files
+########################################
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux temp
+*~
+
+########################################
+# Java / Misc
+########################################
+
+# Log files
+*.log
+
+# Compiled class files
+*.class
+
+# Generated metadata
+*.mvn/
+
+########################################
+# Gradle
+########################################
+
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Wrapper scripts (keep)
+!gradlew
+!gradlew.bat
