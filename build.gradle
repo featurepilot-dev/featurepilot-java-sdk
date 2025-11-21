@@ -16,8 +16,6 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
     }
-    withSourcesJar()
-    withJavadocJar()
 }
 
 repositories {
@@ -61,10 +59,6 @@ jar {
                 "Built-By": "FeaturePilot Build System",
                 "License": "META-INF/LICENSE.txt"
         )
-    }
-
-    from("LICENSE.txt") {
-        into "META-INF"
     }
 }
 
