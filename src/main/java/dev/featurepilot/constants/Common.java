@@ -32,7 +32,7 @@ public final class Common {
     public static final String API_KEY = "api-key";
 
     /** YAML key alias for project ID list: {@code project-ids}. */
-    public static final String PROJECT_IDS = "project-ids";
+    public static final String PROJECT_ID = "project-id";
 
     /** REST endpoint for fetching flags from the FeaturePilot server. */
     public static final String FLAGS_ENDPOINT = "/api/flags";

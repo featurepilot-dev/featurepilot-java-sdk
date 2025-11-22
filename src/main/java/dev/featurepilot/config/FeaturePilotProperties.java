@@ -5,7 +5,6 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static dev.featurepilot.constants.Common.*;
@@ -106,8 +105,8 @@ public class FeaturePilotProperties {
          * Project identifiers used by remote multi-project environments.
          * Accepts YAML key {@code project-ids}.
          */
-        @JsonAlias(PROJECT_IDS)
-        private List<Integer> project;
+        @JsonAlias(PROJECT_ID)
+        private String projectId;
 
         /**
          * Polling interval (in milliseconds) for refresh operations.
