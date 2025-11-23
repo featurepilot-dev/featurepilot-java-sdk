@@ -2,15 +2,12 @@
 
 <p align="center">
   <img src="https://img.shields.io/maven-central/v/dev.featurepilot/sdk?color=%2306ab78&label=FeaturePilot%20SDK" alt="Maven Central"/>
-  <img src="https://img.shields.io/github/license/featurepilot-dev/featurepilot-java-sdk" alt="License"/>
-  <img src="https://img.shields.io/badge/Java-21+-green" alt="Java 21+"/>
-  <img src="https://img.shields.io/badge/Spring%20Boot-3.5.x-blue" alt="Spring Boot 3.5+"/>
-  <img src="https://img.shields.io/badge/status-beta-yellow" alt="Beta"/>
+  <img src="https://img.shields.io/badge/status-alpha-yellow" alt="aplha"/>
 </p>
 
 <div align="center">
   <img src="logo.svg" alt="FeaturePilot Logo" width="200"/>
-  <h1>FeaturePilot Java SDK</h1>
+  <h1>Feature Pilot Java SDK</h1>
   <h3>Feature Flags & Intelligent Flow Routing for Java + Spring Boot</h3>
 </div>
 
@@ -23,11 +20,25 @@ FeaturePilot is a **lightweight, annotation-based feature flag & flow routing SD
 It helps you:
 
 - Release features safely
-- Route traffic between flow variants
-- Run experiments / A/B tests
-- Evaluate flags using request context
+- Route traffic between multiple flows
+- Evaluate flows using request context
 - Switch between **local** or **remote (server)** providers
 - Use clean, production-grade AOP with Spring Boot starter
+
+---
+
+## 🗺️ Roadmap
+
+### ✅ What we have now
+- MVP (annotation-based feature flags + flow routing)
+- Local + Remote provider foundation
+
+### 🚧 Next
+- % rollout (gradual releases)
+- Complex context evaluation (advanced targeting)
+
+### 🏢 Later
+- Enterprise-ready offering (admin UI, multi-project support, advanced strategies)
 
 ---
 
@@ -54,7 +65,7 @@ It helps you:
 
 #### **Gradle**
 ```gradle
-implementation 'dev.featurepilot:sdk:0.0.x'
+implementation 'dev.featurepilot:sdk:0.0.4'
 ```
 
 ---
@@ -92,7 +103,7 @@ featurepilot:
 ## 🧩 Usage
 
 ### 1. Feature Annotation
-
+This is an entry point of the feature you want to control
 ```java
 @Feature("payment_flow")
 public String main(@Context("userId") String userId) {
@@ -103,10 +114,10 @@ public String main(@Context("userId") String userId) {
 ### 2. Flow Variants
 
 ```java
-@Flow(feature = "payment_flow", value = "v1")
+@Flow(feature = "payment_flow", flow = "v1")
 public String v1(String user) { return "Flow v1"; }
 
-@Flow(feature = "payment_flow", value = "v2")
+@Flow(feature = "payment_flow", flow = "v2")
 public String v2(String user) { return "Flow v2"; }
 ```
 
@@ -115,31 +126,6 @@ public String v2(String user) { return "Flow v2"; }
 ```java
 boolean enabled = featureClient.isEnabled("payment", "new", ctx);
 ```
-
----
-
-## 🧠 Context Passing
-
-```java
-FeatureContext ctx = FeatureContextBuilder.newBuilder()
-    .with("userId", 123)
-    .with("country", "AZ")
-    .build();
-```
-
----
-
-## 🗂 Architecture (SDK Internals)
-
-- **Annotations**: `@Feature`, `@Flow`, `@Context`
-- **AOP Interceptor**: Routes annotated methods to correct flow
-- **FlowRegistry**: Registers and resolves flow targets
-- **FeatureManager**:
-    - `SimpleConfigFeatureManager` — reads from YAML
-    - `RemoteFeatureManager` — polls FeaturePilot Server
-- **FeatureClient**: Inline usage for `isEnabled` / `getVariant`
-
-All components follow clean, Spring Boot starter conventions.
 
 ---
 
@@ -156,8 +142,8 @@ docker pull israf1l/featurepilot-server:latest
 ```bash
 docker run -d \
   -p 3000:3000 \
-  -e DATABASE_URL="postgresql://postgres:password@host:5432/featurepilot?schema=public" \
-  -e AUTH_SECRET="$(npx auth secret)" \
+  -e DATABASE_URL="postgresql://username:password@host:port/db?schema=name" \
+  -e AUTH_SECRET="(your secret)" \
   -e ADMIN_USERNAME="admin" \
   -e ADMIN_PASSWORD="pass" \
   --name featurepilot \
@@ -175,21 +161,21 @@ x-api-key: YOUR_API_KEY
 
 ## 🏷 Configuration Reference
 
-| Property | Description |
-|----------|-------------|
-| `featurepilot.source.provider` | `local` or `server` |
-| `featurepilot.flags.*` | Local static flags |
-| `featurepilot.source.server.url` | FeaturePilot Server base URL |
-| `featurepilot.source.server.project` | Project name |
-| `featurepilot.source.server.refresh` | Poll interval in ms |
-| `featurepilot.source.server.fallback` | Use default if server fails |
-| `featurepilot.source.server.auth.api-key` | API key |
+| Property                                  | Description                  |
+|-------------------------------------------|------------------------------|
+| `featurepilot.source.provider`            | `local` or `server`          |
+| `featurepilot.features.*`                 | Local features               |
+| `featurepilot.source.server.url`          | FeaturePilot Server base URL |
+| `featurepilot.source.server.project`      | Project name                 |
+| `featurepilot.source.server.refresh`      | Poll interval in ms          |
+| `featurepilot.source.server.fallback`     | Use default if server fails  |
+| `featurepilot.source.server.auth.api-key` | API key                      |
 
 ---
 
 ## 🤝 Contributing
 
-FeaturePilot is early-stage and evolving fast. Pull requests and issues are welcome.
+FeaturePilot is early-stage and evolving fast. Expect bugs and major changes. Pull requests and issues are welcome.
 
 ---
 
