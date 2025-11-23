@@ -54,9 +54,9 @@
       "description": "Fallback to default flows if remote server is not available."
     },
     {
-      "name": "featurepilot.flags",
+      "name": "featurepilot.features",
       "type": "java.util.Map<java.lang.String,java.lang.String>",
-      "description": "Key-value map of feature flags and their variants."
+      "description": "Key-value map of feature and their current flows."
     }
   ]
 }

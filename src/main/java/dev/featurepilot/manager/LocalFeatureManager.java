@@ -46,7 +46,7 @@ public record LocalFeatureManager(FeaturePilotProperties properties) implements 
      */
     @Override
     public String getFlow(String feature, FeatureContext ctx) {
-        String value = properties.getFlags().get(feature);
+        String value = properties.getFeatures().get(feature);
         return Objects.isNull(value) || value.isBlank() ? DEFAULT : value.trim();
     }
 }

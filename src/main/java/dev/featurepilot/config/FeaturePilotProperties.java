@@ -63,7 +63,7 @@ public class FeaturePilotProperties {
      *   inline_flag: enabled
      * </pre>
      */
-    private Map<String, String> flags = new HashMap<>();
+    private Map<String, String> features = new HashMap<>();
 
     /**
      * Nested configuration describing the feature provider.
