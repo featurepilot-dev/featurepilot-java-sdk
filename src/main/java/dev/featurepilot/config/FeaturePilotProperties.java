@@ -105,8 +105,8 @@ public class FeaturePilotProperties {
          * Project identifiers used by remote multi-project environments.
          * Accepts YAML key {@code project-ids}.
          */
-        @JsonAlias(PROJECT_ID)
-        private String projectId;
+        @JsonAlias(PROJECT)
+        private String project;
 
         /**
          * Polling interval (in milliseconds) for refresh operations.
