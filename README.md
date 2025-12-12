@@ -129,9 +129,9 @@ boolean enabled = featureClient.isEnabled("payment", "new", ctx);
 
 ---
 
-## 🌐 FeaturePilot Server
+## 🌐 Feature Pilot Server
 
-You can run your own FeaturePilot Server using Docker:
+You can run your own Feature Pilot Server using Docker:
 
 ```bash
 docker pull israf1l/featurepilot-server:latest
@@ -175,7 +175,7 @@ x-api-key: YOUR_API_KEY
 
 ## 🤝 Contributing
 
-FeaturePilot is early-stage and evolving fast. Expect bugs and major changes. Pull requests and issues are welcome.
+Feature Pilot is early-stage and evolving fast. Expect bugs and major changes. Pull requests and issues are welcome.
 
 ---
 
