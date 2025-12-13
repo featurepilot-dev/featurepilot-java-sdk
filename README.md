@@ -59,13 +59,13 @@ It helps you:
 <dependency>
   <groupId>dev.featurepilot</groupId>
   <artifactId>sdk</artifactId>
-  <version>0.0.x</version>
+  <version>0.0.6</version>
 </dependency>
 ```
 
 #### **Gradle**
 ```gradle
-implementation 'dev.featurepilot:sdk:0.0.4'
+implementation 'dev.featurepilot:sdk:0.0.6'
 ```
 
 ---
